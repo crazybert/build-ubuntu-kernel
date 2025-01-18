@@ -1,0 +1,8 @@
+#!/bin/bash
+KERNEL_MAJOR_VER="6" \
+KERNEL_BASE_VER="6.12" \
+KERNEL_PATCH_VER="6.12.9" \
+KERNEL_SUB_VER="061209" \
+KERNEL_VERSION_LABEL="custom" \
+DKMS_NVIDIA="yes" \
+./build_kernel.sh

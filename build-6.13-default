@@ -1,0 +1,9 @@
+#!/bin/bash
+KERNEL_SRC_URI="https://git.kernel.org/torvalds/t" \
+KERNEL_SRC_EXT="tar.gz" \
+KERNEL_BASE_VER="6.13" \
+KERNEL_PATCH_VER="6.13-rc1" \
+KERNEL_SUB_VER="061300rc1" \
+KERNEL_MAJOR_VER="6" \
+KERNEL_VERSION_LABEL="custom" \
+./build_kernel.sh
