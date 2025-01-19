@@ -224,7 +224,7 @@ if [ ${KERNEL_BASE_VER} == "6.13" ]; then   # Latest rc
     patch -p1 < ./0001-tcp-bbr3-initial-import.patch;
     echo "*** Copying and applying cachyos fixes patches.. ✓";
     cp -v ${LUCJAN_PATCH_PATH}/${KERNEL_BASE_VER}-rc/cachyos-fixes-patches-v6/*.patch .;
-    patch -p1 -N < ./0001-cachyos-fixes-patches.patch;
+    patch -p1 < ./0001-cachyos-fixes-patches.patch;
     echo "*** Copying and applying clearlinux patches.. ✓";
     cp -v ${LUCJAN_PATCH_PATH}/${KERNEL_BASE_VER}-rc/clearlinux-patches/*.patch .;
     patch -p1 < ./0001-clearlinux-patches.patch;
@@ -292,7 +292,7 @@ elif [ ${KERNEL_BASE_VER} == "6.12" ]; then # Latest stable
     patch -p1 < ./0001-tcp-bbr3-initial-import.patch;
     echo "*** Copying and applying cachyos fixes patches.. ✓";
     cp -v ${LUCJAN_PATCH_PATH}/${KERNEL_BASE_VER}/cachyos-fixes-patches-v20/*.patch .;
-    patch -p1 -N < ./0001-cachyos-fixes-patches.patch;
+    patch -p1 < ./0001-cachyos-fixes-patches.patch;
     echo "*** Copying and applying clang patches.. ✓";
     cp -v ${LUCJAN_PATCH_PATH}/${KERNEL_BASE_VER}/clang-patches-v2/*.patch .;
     patch -p1 < ./0001-clang-patches.patch;
@@ -789,7 +789,10 @@ elif [ ${KERNEL_BASE_VER} == "5.4" ]; then  # LTS kernel, supported until 2025
     patch -p1 < ./0009-cpufreq-tunes-ondemand-and-conservative-governor-for.patch;
     patch -p1 < ./0010-scripts-disable-the-localversion-tag-of-a-git-repo.patch;
 fi
-/usr/bin/patch ./sound/pci/hda/patch_realtek.c </home/DAMAGEINC/kab/build-ubuntu-kernel/my_patch
+
+if [ ${MY_PATCH:-""} != "" ]; then
+    /usr/bin/patch ./sound/pci/hda/patch_realtek.c <${KERNEL_MAIN_DIR}.local/${MY_PATCH}
+fi
 
 # Examples:
 # 6.12.3-061203+customidle-generic
